@@ -3,12 +3,12 @@ import React from 'react';
 
 const ResultsDetail = ({ result }) => {
 	return (
-		<View>
-			<Text>ResultsDetail</Text>
+		<View style={styles.container}>
 			<Image style={styles.image} source={{ uri: result.image_url }} />
 			<Text style={styles.name}>{result.name}</Text>
-			<Text>{result.rating}</Text>
-			<Text>{result.review_count} Reviews</Text>
+			<Text>
+				{result.rating}, {result.review_count} Reviews
+			</Text>
 		</View>
 	);
 };
@@ -20,9 +20,13 @@ const styles = StyleSheet.create({
 		width: 250,
 		height: 250,
 		borderRadius: 4,
+		marginBottom: 5,
 	},
 	name: {
 		fontWeight: 'bold',
 		fontSize: 14,
+	},
+	container: {
+		marginLeft: 15,
 	},
 });

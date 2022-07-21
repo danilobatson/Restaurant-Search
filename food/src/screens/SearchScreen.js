@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import ResultsList from '../components/ResultsList';
 import useResults from '../hooks/useResults';
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
 	const [term, setTerm] = useState('');
 	const [searchApi, results, errorMessage] = useResults();
 
@@ -15,19 +15,32 @@ const SearchScreen = () => {
 	};
 
 	return (
-		<View>
+		<>
 			<SearchBar
 				term={term}
 				onTermChange={setTerm}
 				onTermSubmit={() => searchApi(term)}
 			/>
-			<Text>We have found {results.length} results</Text>
 			{errorMessage.length > 0 && <Text>{errorMessage} results</Text>}
-			<ResultsList title='Cost Effective' results={filterResultsByPrice('$')} />
-			<ResultsList title='Bit Pricer' results={filterResultsByPrice('$$')} />
-			<ResultsList title='Big Spender' results={filterResultsByPrice('$$$')} />
-			<ResultsList title='All Out' results={filterResultsByPrice('$$$$')} />
-		</View>
+			<ScrollView>
+				<ResultsList
+					navigation={navigation}
+					title='Cost Effective'
+					results={filterResultsByPrice('$')}
+				/>
+				<ResultsList
+					navigation={navigation}
+					title='Bit Pricer'
+					results={filterResultsByPrice('$$')}
+				/>
+				<ResultsList
+					navigation={navigation}
+					title='Big Spender'
+					results={filterResultsByPrice('$$$')}
+				/>
+				<ResultsList title='All Out' results={filterResultsByPrice('$$$$')} />
+			</ScrollView>
+		</>
 	);
 };
 
