@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import SearchBar from '../components/SearchBar';
+import ResultsList from '../components/ResultsList';
 import useResults from '../hooks/useResults';
 
 const SearchScreen = () => {
@@ -14,8 +15,11 @@ const SearchScreen = () => {
 				onTermChange={setTerm}
 				onTermSubmit={() => searchApi(term)}
 			/>
-			<Text>We have found {results.length}</Text>
-			{errorMessage.length > 0 && <Text>{errorMessage}</Text>}
+			<Text>We have found {results.length} results</Text>
+			{errorMessage.length > 0 && <Text>{errorMessage} results</Text>}
+			<ResultsList title='Cost Effective' />
+			<ResultsList title='Bit Pricer' />
+			<ResultsList title='Big Spender' />
 		</View>
 	);
 };
