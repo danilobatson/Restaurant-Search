@@ -6,6 +6,7 @@ import {
 	FlatList,
 } from 'react-native';
 import React from 'react';
+import { withNavigation } from 'react-navigation';
 import ResultsDetail from '../components/ResultsDetail';
 
 const ResultsList = ({ title, results, navigation }) => {
@@ -36,7 +37,7 @@ const ResultsList = ({ title, results, navigation }) => {
 	);
 };
 
-export default ResultsList;
+export default withNavigation(ResultsList);
 
 const styles = StyleSheet.create({
 	title: {
