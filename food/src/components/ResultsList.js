@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const ResultsList = ({ title }) => {
+const ResultsList = ({ title, results }) => {
 	return (
 		<View>
 			<Text style={styles.title}>{title}</Text>
+			<Text >Results: {results.length}</Text>
 		</View>
 	);
 };
