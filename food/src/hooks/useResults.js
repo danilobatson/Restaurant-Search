@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import yelp from '../api/yelp';
 
@@ -12,7 +12,7 @@ export default () => {
 				params: {
 					limit: 50,
 					term: searchTerm,
-					location: 'orange county',
+					location: 'miami',
 				},
 			});
 			setResults(response.data.businesses);
